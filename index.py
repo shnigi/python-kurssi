@@ -90,7 +90,6 @@ def FileCheck(fn):
       return
     except IOError:
       print("Tietokantaa ei ole vielä luotu. Luodaan uusi.")
-      dbName = fn + ".json"
       f = open(dbName, "w+")
       with open(dbName, "a") as database:
           database.write('{"Baarikierrokset": []}')
