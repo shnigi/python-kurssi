@@ -13,7 +13,7 @@ def apua():
     print('1. Lisää baarikierros')
     print('2. Listaa baarikierrokset')
     print('3. Poista baarikierros')
-    print('4. Lopeta')
+    print('4. Lopeta\n')
     start()
 
 def exit():
@@ -23,11 +23,11 @@ def exit():
 
 def addBaarikierros():
     print('Lisätäänpä baarikierros \n')
-    name = input('nimi\n')
-    location = input('lokaatio\n')
-    time = input('aika\n')
-    drinkAmount = input('juomien määrä\n')
-    with open(tietokanta, 'w') as json_file:
+    name = input('Kierroksen nimi:\n')
+    location = input('Kierroksen lokaatio: \n')
+    time = input('Aika tunteina:\n')
+    drinkAmount = input('juomien määrä tölkeissä:\n')
+    with open(tietokanta) as json_file:
         data = json.load(json_file)
         data['Baarikierrokset'].append({
             'name': name,
@@ -35,20 +35,33 @@ def addBaarikierros():
             'time': time,
             'drinkAmount': drinkAmount
         })
-    json.dump(data, json_file)
+    with open(tietokanta, 'w') as f:
+        json.dump(data, f)
     print('Kierros lisätty onnistuneesti\n')
     start()
 
-def listBaarikierrokset():
+def listOnly():
     with open(tietokanta) as json_file:
         data = json.load(json_file)
-        for kierros in data['Baarikierrokset']:
-            print(kierros['name'])
+        for index, kierros in enumerate(data['Baarikierrokset']):
+            print(index, kierros['name'])
     print('\n')
+
+def listBaarikierrokset():
+    listOnly()
     start()
 
 def removeBaarikierros():
-    print('Mikä kierros poistetaan?')
+    print('Kierrokset:\n')
+    listOnly()
+    index = int(input('Mikä kierros poistetaan? Anna numero.\n'))
+    with open(tietokanta) as json_file:
+        data = json.load(json_file)
+        del data['Baarikierrokset'][index]
+    with open(tietokanta, 'w') as f:
+        json.dump(data, f)
+    print('Poistettu onnistuneesti.\n')
+    start()
 
 def start():
     toDo = input('Kuis laitetaa?\n')
