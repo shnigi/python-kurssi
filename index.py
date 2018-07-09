@@ -1,7 +1,6 @@
 # -*- coding: utf-8 -*-
 import sys
 import json
-tietokanta = "tietokanta.json"
 
 def apua():
     print('0. Apu')
@@ -12,7 +11,7 @@ def apua():
     print('5. Lopeta\n')
 
 def exit():
-    print('Kiitos ja näkemiin! \n')
+    print('Kiitos ja näkemiin!')
     sys.exit()
 
 def addBaarikierros():
@@ -82,6 +81,22 @@ def editKierros():
         json.dump(data, f)
     print('Muokattu onnistuneesti.\n')
 
+def FileCheck(fn):
+    global tietokanta
+    dbName = fn + ".json"
+    try:
+      open(dbName, "r")
+      tietokanta = dbName
+      return
+    except IOError:
+      print("Tietokantaa ei ole vielä luotu. Luodaan uusi.")
+      dbName = fn + ".json"
+      f = open(dbName, "w+")
+      with open(dbName, "a") as database:
+          database.write('{"Baarikierrokset": []}')
+      tietokanta = dbName
+      print("Tietokanta luotu onnistuneesti.")
+      return
 
 def start():
     while True:
@@ -105,5 +120,7 @@ def start():
         else:
             print('Vain numeroita 1-3 pls')
 
+dbName = input('Syötä tietokannan nimi (jos ei löydy luodaan uusi):\n')
+FileCheck(dbName)
 print('Baarikierros softa versio 1.0 \n 0. Apu \n 1. Lisää baarikierros \n 2. Listaa baarikierrokset \n 3. Poista baarikierros \n 4. Muokkaa kierrosta \n 5. Lopeta \n')
 start()
