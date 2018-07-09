@@ -3,10 +3,6 @@ import sys
 import json
 tietokanta = "tietokanta.json"
 
-def begin():
-    print('Baarikierros softa versio 1.0 \n 0. Apu \n 1. Lisää baarikierros \n 2. Listaa baarikierrokset \n 3. Poista baarikierros \n 4. Muokkaa kierrosta \n 5. Lopeta \n')
-    start()
-
 def apua():
     print('0. Apu')
     print('1. Lisää baarikierros')
@@ -109,4 +105,5 @@ def start():
         else:
             print('Vain numeroita 1-3 pls')
 
-begin()
+print('Baarikierros softa versio 1.0 \n 0. Apu \n 1. Lisää baarikierros \n 2. Listaa baarikierrokset \n 3. Poista baarikierros \n 4. Muokkaa kierrosta \n 5. Lopeta \n')
+start()
