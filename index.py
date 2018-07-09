@@ -5,7 +5,7 @@ invalid_input = True
 tietokanta = "tietokanta.json"
 
 def begin():
-    print('Baarikierros softa versio 1.0 \n Syötä numero: \n 0. Apu \n 1. Lisää baarikierros \n 2. Listaa baarikierrokset \n 3. Poista baarikierros \n 4. Lopeta \n')
+    print('Baarikierros softa versio 1.0 \n 0. Apu \n 1. Lisää baarikierros \n 2. Listaa baarikierrokset \n 3. Poista baarikierros \n 4. Lopeta \n')
     start()
 
 def apua():
@@ -64,7 +64,7 @@ def removeBaarikierros():
     start()
 
 def start():
-    toDo = input('Kuis laitetaa?\n')
+    toDo = input('Kuis laitetaa? Syötä numero:\n')
     if toDo == '0':
         print('\n')
         apua()
