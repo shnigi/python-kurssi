@@ -1,7 +1,6 @@
 # -*- coding: utf-8 -*-
 import sys
 import json
-invalid_input = True
 tietokanta = "tietokanta.json"
 
 def begin():
@@ -18,7 +17,6 @@ def apua():
 
 def exit():
     print('Kiitos ja näkemiin! \n')
-    invalid_input = True;
     sys.exit()
 
 def addBaarikierros():
